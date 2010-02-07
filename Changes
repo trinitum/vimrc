@@ -1,3 +1,9 @@
 
 Mon Feb  8 2010 Pavel Shaydo <zwon@trinitum.org>
-- Imported indent and syntax files from git://github.com/petdance/vim-perl.git
+    * Oops, copied wrong file into indent.
+
+Mon Feb  8 2010 Pavel Shaydo <zwon@trinitum.org>
+    * Imported indent and syntax files from git://github.com/petdance/vim-perl.git
+    * Fixed folding in vim/syntax/perl.vim
+
+# vim:ft=changelog
