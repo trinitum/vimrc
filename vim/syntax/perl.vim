@@ -1,9 +1,10 @@
 " Vim syntax file
 " Language:     Perl 5
-" Maintainer:   Andy Lester <andy@petdance.com>
-" URL:          http://github.com/petdance/vim-perl/tree/master
-" Last Change:  2009-09-2
-" Contributors: Andy Lester <andy@petdance.com>
+" Maintainer:   Pavel Shaydo <zwon@trinitum.org>
+" URL:          http://github.com/trinitum/vimrc
+" DerivedFrom:  http://github.com/petdance/vim-perl
+" Contributors: Pavel Shaydo <zwon@cpan.org>
+"               Andy Lester <andy@petdance.com>
 "               Hinrik Örn Sigurðsson <hinrik.sig@gmail.com>
 "               Lukas Mai <l.mai.web.de>
 "               Nick Hibma <nick@van-laarhoven.org>
@@ -94,6 +95,8 @@ syn match perlStatementPword		"\<\%(get\%(pw\%(uid\|nam\)\|gr\%(gid\|nam\)\|logi
 syn match perlStatementTime		"\<\%(gmtime\|localtime\|time\)\>"
 
 syn match perlStatementMisc		"\<\%(warn\|formline\|reset\|scalar\|prototype\|lock\|tied\=\|untie\)\>"
+syn match perlStatementMoose            "\<\%(has\|requires\|with\|extends\|before\|after\|around\|augment\|inner\|override\|super\)\>"
+syn match perlStatementCarp             "\<\%(carp\|cluck\|croak\|confess\)\>"
 
 syn keyword perlTodo			TODO TBD FIXME XXX NOTE contained
 
@@ -494,6 +497,8 @@ HiLink perlStatementPword	perlStatement
 HiLink perlStatementTime	perlStatement
 HiLink perlStatementMisc	perlStatement
 HiLink perlStatementIndirObj	perlStatement
+HiLink perlStatementMoose       perlStatement
+HiLink perlStatementCarp        perlStatement
 HiLink perlFunctionName		perlIdentifier
 HiLink perlMethod		perlIdentifier
 HiLink perlFunctionPRef		perlType
