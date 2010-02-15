@@ -1,4 +1,8 @@
-Thu Feb 11 2010 Pavel Shaydo <zwon@cpan.org>
+Tue Feb 16 2010 Pavel Shaydo <zwon@trinitum.org>
+    * Added <C-T> toggle between tt2 and tt2html for *.tt2
+    * Added <C-O> for :set paste!
+
+Thu Feb 11 2010 Pavel Shaydo <zwon@trinitum.org>
     * Added filetypes.vim
     * Added tt2 syntax files
 

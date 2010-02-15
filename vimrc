@@ -54,6 +54,8 @@ nmap <C-H> :nohlsearch<CR>
 " resync syntax highlight
 nmap <C-P> :syn sync fromstart<CR>
 imap <C-P> <ESC>:syn sync fromstart<CR>i
+map <C-O> :set paste!<CR>
+imap <C-O> <ESC>:set paste!<CR>i
 
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
@@ -209,6 +211,17 @@ if has("autocmd")
   autocmd FileType perl setlocal textwidth=0
   autocmd FileType perl setlocal cindent
   autocmd FileType perl setlocal foldlevel=0 foldmethod=syntax foldcolumn=2 foldnestmax=1
+ augroup END
+
+ augroup tt2
+  au!
+  au BufWinLeave *.tt2 mkview
+  au BufWinEnter *.tt2 silent loadview
+  autocmd BufReadPre,FileReadPre *.tt2 setlocal indentexpr= tw=0 softtabstop=4 shiftwidth=4 expandtab
+  autocmd FileType tt2html map <buffer> <C-T> :setlocal filetype=tt2<CR>
+  autocmd FileType tt2html imap <buffer> <C-T> <ESC>:setlocal filetype=tt2<CR>i
+  autocmd FileType tt2     map <buffer> <C-T> :setlocal filetype=tt2html<CR>
+  autocmd FileType tt2     imap <buffer> <C-T> <ESC>:setlocal filetype=tt2html<CR>i
  augroup END
 
  augroup xml
