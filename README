@@ -3,6 +3,7 @@ are work of other people, particularly:
 
 - perl syntax and indent files from http://github.com/petdance/vim-perl
 - bufexplorer plugin http://www.vim.org/scripts/script.php?script_id=42
+- tt2 syntax files by Atsushi Moriki
 
 Some of these files were modified by me to my taste, see Changes for
 details

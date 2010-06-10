@@ -1,3 +1,7 @@
+Thu Feb 11 2010 Pavel Shaydo <zwon@cpan.org>
+    * Added filetypes.vim
+    * Added tt2 syntax files
+
 Tue Feb  9 2010 Pavel Shaydo <zwon@trinitum.org>
     * Added bufexplorer 7.2.4 plugin
 
