@@ -217,9 +217,10 @@ if has("autocmd")
   au!
   au BufWinLeave *.tt2 mkview
   au BufWinEnter *.tt2 silent loadview
-  autocmd BufReadPre,FileReadPre *.tt2 setlocal indentexpr= tw=0 softtabstop=4 shiftwidth=4 expandtab
+  autocmd FileType tt2html setlocal indentexpr= tw=0 softtabstop=4 shiftwidth=4 expandtab
   autocmd FileType tt2html map <buffer> <C-T> :setlocal filetype=tt2<CR>
   autocmd FileType tt2html imap <buffer> <C-T> <ESC>:setlocal filetype=tt2<CR>i
+  autocmd FileType tt2     setlocal indentexpr= tw=0 softtabstop=4 shiftwidth=4 expandtab
   autocmd FileType tt2     map <buffer> <C-T> :setlocal filetype=tt2html<CR>
   autocmd FileType tt2     imap <buffer> <C-T> <ESC>:setlocal filetype=tt2html<CR>i
  augroup END
