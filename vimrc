@@ -175,6 +175,15 @@ if has("cscope") && filereadable("/usr/bin/cscope")
    set csverb
 endif
 
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
+
 " Fix number of colors for xterm
 if &term =~ "xterm" && &t_Co == 8
   set t_Co=16
