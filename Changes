@@ -1,3 +1,8 @@
+Tue Dec  7 2010 Pavel Shaydo <zwon@trinitum.org>
+    * Add Ack plugin
+    * Add vcscommand plugin
+    * Add 256 color support
+
 Tue Feb 16 2010 Pavel Shaydo <zwon@trinitum.org>
     * Added <C-T> toggle between tt2 and tt2html for *.tt2
     * Added <C-O> for :set paste!
