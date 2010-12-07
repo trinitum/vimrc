@@ -185,13 +185,9 @@ endfunction
 com! DiffSaved call s:DiffWithSaved()
 
 " Fix number of colors for xterm
-if &term =~ "xterm" && &t_Co == 8
-  set t_Co=16
-  hi CursorLine term=NONE cterm=bold ctermbg=8
-  hi Folded ctermbg=8 ctermfg=14
-  hi FoldColumn ctermbg=8 ctermfg=14
-  hi Visual term=NONE cterm=bold ctermbg=10 ctermfg=8
-  hi Search term=reverse cterm=bold ctermbg=11 ctermfg=0
+if &term =~ "xterm"
+  set t_Co=256
+  colorscheme desert
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
