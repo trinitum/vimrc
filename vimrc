@@ -185,7 +185,7 @@ endfunction
 com! DiffSaved call s:DiffWithSaved()
 
 " Fix number of colors for xterm
-if &term =~ "xterm"
+if &term =~ "xterm" || &term =~ "256color"
   set t_Co=256
   colorscheme desert
 endif
