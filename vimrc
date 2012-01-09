@@ -184,7 +184,13 @@ com! DiffSaved call s:DiffWithSaved()
 " Fix number of colors for xterm
 if &term =~ "xterm" || &term =~ "256color"
   set t_Co=256
-  colorscheme desert
+  if has('gui')
+    colorscheme desert
+  else
+    colorscheme desert256
+    let g:CSApprox_loaded=1
+    let g:CSApprox_verbose_level=0
+  endif
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
