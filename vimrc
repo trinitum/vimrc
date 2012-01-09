@@ -53,7 +53,6 @@ nmap <C-H> :nohlsearch<CR>
 nmap <C-P> :syn sync fromstart<CR>
 imap <C-P> <ESC>:syn sync fromstart<CR>i
 map <C-O> :set paste!<CR>
-imap <C-O> <ESC>:set paste!<CR>i
 
 " Make p in Visual mode replace the selected text with the "" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
