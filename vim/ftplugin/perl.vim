@@ -4,7 +4,7 @@
 " which I actually use. It is lite and does what I want.
 
 if !exists("b:loaded_perl_ftplugin")
-	setlocal tabstop=4
+	setlocal softtabstop=4
 	setlocal shiftwidth=4
 	setlocal iskeyword+=:
 
