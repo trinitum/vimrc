@@ -17,7 +17,6 @@ set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set scrolloff=5
 set vb
-set cursorline
 
 set statusline=%F%m%r%h%w\ [%{&ff}]\ %y\ [CHR=%b/0x%B]\ [POS=%04l,%03c(%03v)]\ [%p%%]\ [LEN=%L]
 set laststatus=2
@@ -186,6 +185,7 @@ if &term =~ "xterm" || &term =~ "256color"
   set t_Co=256
   if has('gui')
     colorscheme desert
+    set cursorline
   else
     colorscheme desert256
     let g:CSApprox_loaded=1
@@ -198,7 +198,6 @@ endif
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
-  set cursorline
 endif
 
 filetype plugin indent on
