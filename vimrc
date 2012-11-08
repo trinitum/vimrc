@@ -27,6 +27,9 @@ let c_no_comment_fold=1
 " let perl_include_pod=1
 let g:omni_sql_no_default_maps=1
 
+" map vscommand to \v
+let g:VCSCommandMapPrefix='<Leader>v'
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
