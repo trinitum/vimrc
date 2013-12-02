@@ -260,7 +260,7 @@ if has("autocmd")
  augroup chlog
   au!
    autocmd FileType changelog setlocal shiftwidth=4 softtabstop=4 expandtab
-   autocmd FileType changelog map <buffer> <Leader>o O<ESC>O<ESC>:call ChlogDate()<CR>i<TAB>* 
+   autocmd FileType changelog map <buffer> <Leader>o O<ESC>O<ESC>:call ChlogDate()<CR>i<TAB>- 
  augroup END
 
  augroup sh
