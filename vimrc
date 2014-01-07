@@ -5,7 +5,6 @@ endif
 set viewoptions=cursor,folds
 set nocompatible
 set backspace=indent,eol,start
-set tw=72
 set ai			" always set autoindenting on
 set nobackup		" do not keep a backup file, use versions instead
 set viminfo='20,\"50	" read/write a .viminfo file, don't store more
@@ -18,6 +17,11 @@ set incsearch		" do incremental searching
 set scrolloff=5
 set vb
 
+set softtabstop=4
+set shiftwidth=4
+set tw=0
+set expandtab
+
 set statusline=%F%m%r%h%w\ [%{&ff}]\ %y\ [CHR=%b/0x%B]\ [POS=%04l,%03c(%03v)]\ [%p%%]\ [LEN=%L]
 set laststatus=2
 
@@ -26,7 +30,6 @@ let perl_nofold_packages=1
 let perl_fold_anonymous_subs=1
 let perl_include_pod=0
 let c_no_comment_fold=1
-" let perl_include_pod=1
 let g:omni_sql_no_default_maps=1
 
 " map vscommand to \v
@@ -220,8 +223,6 @@ if has("autocmd")
   au!
   au BufWinLeave *.pl,*.pm mkview
   au BufWinEnter *.pl,*.pm silent loadview
-  autocmd FileType perl setlocal shiftwidth=4 softtabstop=4 expandtab
-  autocmd FileType perl setlocal textwidth=0
   autocmd FileType perl setlocal cindent
   autocmd FileType perl setlocal foldlevel=0 foldmethod=syntax foldcolumn=2 foldnestmax=1
  augroup END
@@ -230,10 +231,10 @@ if has("autocmd")
   au!
   au BufWinLeave *.tt,*.tt2 mkview
   au BufWinEnter *.tt,*.tt2 silent loadview
-  autocmd FileType tt2html setlocal indentexpr= tw=0 softtabstop=4 shiftwidth=4 expandtab
+  autocmd FileType tt2html setlocal indentexpr=
   autocmd FileType tt2html map <buffer> <C-T> :setlocal filetype=tt2<CR>
   autocmd FileType tt2html imap <buffer> <C-T> <ESC>:setlocal filetype=tt2<CR>i
-  autocmd FileType tt2     setlocal indentexpr= tw=0 softtabstop=4 shiftwidth=4 expandtab
+  autocmd FileType tt2     setlocal indentexpr=
   autocmd FileType tt2     map <buffer> <C-T> :setlocal filetype=tt2html<CR>
   autocmd FileType tt2     imap <buffer> <C-T> <ESC>:setlocal filetype=tt2html<CR>i
  augroup END
@@ -248,26 +249,28 @@ if has("autocmd")
  augroup html
   au!
   autocmd FileType html setlocal identexpr=
-  autocmd FileType html setlocal tw=0
-  autocmd FileType html setlocal softtabstop=4 shiftwidth=4
  augroup END
 
  augroup cprog
   au!
   autocmd FileType c,cpp setlocal cindent formatoptions=crql
-  autocmd FileType c,cpp setlocal shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType c,cpp setlocal foldmethod=syntax foldcolumn=2 foldnestmax=1
  augroup END
 
  augroup chlog
-  au!
-   autocmd FileType changelog setlocal shiftwidth=4 softtabstop=4 expandtab
+   au!
    autocmd FileType changelog map <buffer> <Leader>o O<ESC>O<ESC>:call ChlogDate()<CR>i<TAB>- 
+   autocmd FileType changelog setlocal tw=72
  augroup END
 
- augroup sh
+ augroup text
    au!
-   autocmd FileType sh setlocal shiftwidth=4 softtabstop=4 expandtab textwidth=0
+   autocmd FileType text setlocal tw=72
+ augroup END
+
+ augroup make
+   au!
+   autocmd FileType make setlocal softtabstop=8 shiftwidth=8 noexpandtab
  augroup END
 
  augroup encrypted
