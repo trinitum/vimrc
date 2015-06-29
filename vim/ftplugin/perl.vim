@@ -8,7 +8,7 @@ if !exists("b:loaded_perl_ftplugin")
 	setlocal shiftwidth=4
 	setlocal iskeyword+=:
 
-	ia dmpr use Data::Dumper;<CR>warn Dumper [];<ESC>hi
+	ia ddpr use DDP;<CR>p
 	ia bnch use Benchmark qw( cmpthese );<CR>cmpthese -10, {};<ESC>O
 	ia bplt use 5.010;<CR>use strict;<CR>use warnings;<CR>
 
