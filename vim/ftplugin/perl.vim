@@ -10,7 +10,7 @@ if !exists("b:loaded_perl_ftplugin")
 
 	ia ddpr use DDP;<CR>p
 	ia bnch use Benchmark qw( cmpthese );<CR>cmpthese -10, {};<ESC>O
-	ia bplt use 5.010;<CR>use strict;<CR>use warnings;<CR>
+	ia bplt <ESC>:set paste<CR>i#!/usr/bin/env perl<CR>use 5.014;<CR>use strict;<CR>use warnings;<CR><ESC>:set nopaste<CR>i
 
 	nnoremap    <buffer> <silent> <LocalLeader>cb :call <SID>BlockComment()<CR>
 	vnoremap    <buffer> <silent> <LocalLeader>cb :call <SID>BlockComment()<CR>
