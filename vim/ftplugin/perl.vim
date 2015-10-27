@@ -26,6 +26,8 @@ if !exists("b:loaded_perl_ftplugin")
 	inoremap    <buffer> <silent> <LocalLeader>cm :call <ESC><SID>SubComment("\$self->")<CR>$a
 	nnoremap    <buffer> <silent> <LocalLeader>cs :call <SID>SubComment("\$class->")<CR>$a
 	inoremap    <buffer> <silent> <LocalLeader>cs :call <ESC><SID>SubComment("\$class->")<CR>$a
+        nnoremap    <buffer> <silent> <LocalLeader>ca :call <SID>AttrComment()<CR>$a
+        inoremap    <buffer> <silent> <LocalLeader>ca :call <ESC><SID>AttrComment()<CR>$a
 
 	nnoremap    <buffer> <silent> <LocalLeader>rs :call <SID>SyntaxCheck()<CR>
 	nnoremap    <buffer> <silent> <LocalLeader>re :call <SID>ChmodX()<CR>
@@ -77,6 +79,22 @@ function s:SubComment (prefix)
 	let l:lnum  = line(".")
 	call append(l:lnum - 1, [ "=head2 " . a:prefix . l:fname, "", "=cut", "" ])
 	call cursor(l:lnum, 1)
+endfunction
+
+function s:AttrName ()
+        let l:line = getline(".")
+        if match(l:line, "^has \\w\\+") == -1
+                return ""
+        else
+                return substitute(l:line, "^has \\(\\w\\+\\).*$", "\\1", "")
+        endif
+endfunction
+
+function s:AttrComment ()
+        let l:aname = s:AttrName()
+        let l:lnum  = line(".")
+        call append(l:lnum - 1, [ "=head3 " . l:aname, "", "=cut", "" ])
+        call cursor(l:lnum, 1)
 endfunction
 
 function s:SyntaxCheck ()
