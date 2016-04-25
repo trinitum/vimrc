@@ -273,6 +273,11 @@ if has("autocmd")
    autocmd FileType make setlocal softtabstop=8 shiftwidth=8 noexpandtab
  augroup END
 
+ augroup make
+   au!
+   autocmd FileType go setlocal softtabstop=8 shiftwidth=8 noexpandtab
+ augroup END
+
  augroup encrypted
     au!
 
