@@ -1,3 +1,4 @@
+execute pathogen#infect()
 if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=ucs-bom,utf-8,latin1
 endif
