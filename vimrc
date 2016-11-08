@@ -218,65 +218,65 @@ com -range=% Sign <line1>,<line2>:!gpg --clearsign
 if has("autocmd")
 
  " In text files, always limit the width of text to 78 characters
- autocmd BufRead *.txt setlocal tw=78
+ au BufRead *.txt setlocal tw=78
 
  augroup perl
   au!
   au BufWinLeave *.pl,*.pm mkview
   au BufWinEnter *.pl,*.pm silent loadview
-  autocmd FileType perl setlocal cindent
-  autocmd FileType perl setlocal foldlevel=0 foldmethod=syntax foldcolumn=2 foldnestmax=1
+  au FileType perl setlocal cindent
+  au FileType perl setlocal foldlevel=0 foldmethod=syntax foldcolumn=2 foldnestmax=1
  augroup END
 
  augroup tt2
   au!
   au BufWinLeave *.tt,*.tt2 mkview
   au BufWinEnter *.tt,*.tt2 silent loadview
-  autocmd FileType tt2html setlocal indentexpr=
-  autocmd FileType tt2html map <buffer> <C-T> :setlocal filetype=tt2<CR>
-  autocmd FileType tt2html imap <buffer> <C-T> <ESC>:setlocal filetype=tt2<CR>i
-  autocmd FileType tt2     setlocal indentexpr=
-  autocmd FileType tt2     map <buffer> <C-T> :setlocal filetype=tt2html<CR>
-  autocmd FileType tt2     imap <buffer> <C-T> <ESC>:setlocal filetype=tt2html<CR>i
+  au FileType tt2html setlocal indentexpr=
+  au FileType tt2html map <buffer> <C-T> :setlocal filetype=tt2<CR>
+  au FileType tt2html imap <buffer> <C-T> <ESC>:setlocal filetype=tt2<CR>i
+  au FileType tt2     setlocal indentexpr=
+  au FileType tt2     map <buffer> <C-T> :setlocal filetype=tt2html<CR>
+  au FileType tt2     imap <buffer> <C-T> <ESC>:setlocal filetype=tt2html<CR>i
  augroup END
 
  augroup xml
   au!
-  autocmd BufReadPre,FileReadPre *.xml,*xhtml setlocal noautoindent
-  autocmd BufReadPre,FileReadPre *.xml,*xhtml setlocal indentexpr=
-  autocmd BufReadPre,FileReadPre *.xml,*xhtml setlocal shiftwidth=2 expandtab
+  au BufReadPre,FileReadPre *.xml,*xhtml setlocal noautoindent
+  au BufReadPre,FileReadPre *.xml,*xhtml setlocal indentexpr=
+  au BufReadPre,FileReadPre *.xml,*xhtml setlocal shiftwidth=2 expandtab
  augroup END
 
  augroup html
   au!
-  autocmd FileType html setlocal identexpr=
+  au FileType html setlocal identexpr=
  augroup END
 
  augroup cprog
   au!
-  autocmd FileType c,cpp setlocal cindent formatoptions=crql
-  autocmd FileType c,cpp setlocal foldmethod=syntax foldcolumn=2 foldnestmax=1
+  au FileType c,cpp setlocal cindent formatoptions=crql
+  au FileType c,cpp setlocal foldmethod=syntax foldcolumn=2 foldnestmax=1
  augroup END
 
  augroup chlog
    au!
-   autocmd FileType changelog map <buffer> <Leader>o O<ESC>O<ESC>:call ChlogDate()<CR>i<TAB>- 
-   autocmd FileType changelog setlocal tw=72
+   au FileType changelog map <buffer> <Leader>o O<ESC>O<ESC>:call ChlogDate()<CR>i<TAB>- 
+   au FileType changelog setlocal tw=72
  augroup END
 
  augroup text
    au!
-   autocmd FileType text setlocal tw=72
+   au FileType text setlocal tw=72
  augroup END
 
  augroup make
    au!
-   autocmd FileType make setlocal softtabstop=8 shiftwidth=8 noexpandtab
+   au FileType make setlocal softtabstop=8 shiftwidth=8 noexpandtab
  augroup END
 
  augroup make
    au!
-   autocmd FileType go setlocal softtabstop=8 shiftwidth=8 noexpandtab
+   au FileType go setlocal softtabstop=8 shiftwidth=8 noexpandtab
  augroup END
 
  augroup encrypted
@@ -284,23 +284,23 @@ if has("autocmd")
 
     " First make sure nothing is written to ~/.viminfo while editing
     " an encrypted file.
-    autocmd BufReadPre,FileReadPre      *.gpg set viminfo=
+    au BufReadPre,FileReadPre      *.gpg set viminfo=
     " We don't want a swap file, as it writes unencrypted data to disk
-    autocmd BufReadPre,FileReadPre      *.gpg set noswapfile
+    au BufReadPre,FileReadPre      *.gpg set noswapfile
     " Switch to binary mode to read the encrypted file
-    autocmd BufReadPre,FileReadPre      *.gpg set bin
-    autocmd BufReadPre,FileReadPre      *.gpg let ch_save = &ch|set ch=2
-    autocmd BufReadPost,FileReadPost    *.gpg '[,']!gpg --decrypt 2> /dev/null
+    au BufReadPre,FileReadPre      *.gpg set bin
+    au BufReadPre,FileReadPre      *.gpg let ch_save = &ch|set ch=2
+    au BufReadPost,FileReadPost    *.gpg '[,']!gpg --decrypt 2> /dev/null
     " Switch to normal mode for editing
-    autocmd BufReadPost,FileReadPost    *.gpg set nobin
-    autocmd BufReadPost,FileReadPost    *.gpg let &ch = ch_save|unlet ch_save
-    autocmd BufReadPost,FileReadPost    *.gpg execute ":doautocmd BufReadPost " . expand("%:r")
+    au BufReadPost,FileReadPost    *.gpg set nobin
+    au BufReadPost,FileReadPost    *.gpg let &ch = ch_save|unlet ch_save
+    au BufReadPost,FileReadPost    *.gpg execute ":doautocmd BufReadPost " . expand("%:r")
 
     " Convert all text to encrypted text before writing
-    autocmd BufWritePre,FileWritePre    *.gpg   '[,']!gpg --default-recipient-self -ae 2>/dev/null
+    au BufWritePre,FileWritePre    *.gpg   '[,']!gpg --default-recipient-self -ae 2>/dev/null
     " Undo the encryption so we are back in the normal text, directly
     " after the file has been written.
-    autocmd BufWritePost,FileWritePost    *.gpg   u
+    au BufWritePost,FileWritePost    *.gpg   u
  augroup END
 
 endif " has("autocmd")
