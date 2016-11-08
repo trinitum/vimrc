@@ -167,8 +167,8 @@ function InsEmail()
     call setpos('.', [ 0, line('.'), curpos + len(g:full_user_email) + 1, 0 ])
 endfunction
 
-map <Leader>m :call InsEmail()<CR>
-imap <Leader>m <ESC>:call InsEmail()<CR>i
+map <Leader>mail :call InsEmail()<CR>
+imap <Leader>mail <ESC>:call InsEmail()<CR>i
 
 if has("cscope") && filereadable("/usr/bin/cscope")
    set csprg=/usr/bin/cscope
