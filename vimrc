@@ -76,8 +76,13 @@ if has("insert_expand")
         endif
     endfunction
 
-    " bind function to the tab key
-    inoremap <Tab> <C-R>=CleverTab()<cr>
+    function! CleverTabOmni()
+        if strpart( getline('.'), 0, col('.')-1 ) =~ '\(^\s*\|\s\)$'
+            return "\<Tab>"
+        else
+            return "\<C-X>\<C-O>"
+        endif
+    endfunction
 endif
 
 if exists('$EMAIL') && $EMAIL != ''
@@ -226,6 +231,7 @@ if has("autocmd")
   au BufWinEnter *.pl,*.pm silent loadview
   au FileType perl setlocal cindent
   au FileType perl setlocal foldlevel=0 foldmethod=syntax foldcolumn=2 foldnestmax=1
+  au FileType perl inoremap <buffer> <Tab> <C-R>=CleverTab()<CR>
  augroup END
 
  augroup tt2
@@ -274,9 +280,10 @@ if has("autocmd")
    au FileType make setlocal softtabstop=8 shiftwidth=8 noexpandtab
  augroup END
 
- augroup make
+ augroup go
    au!
    au FileType go setlocal softtabstop=8 shiftwidth=8 noexpandtab
+   au FileType go imap <buffer> <Tab> <C-R>=CleverTabOmni()<CR>
  augroup END
 
  augroup encrypted
