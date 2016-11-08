@@ -284,6 +284,7 @@ if has("autocmd")
    au!
    au FileType go setlocal softtabstop=8 shiftwidth=8 noexpandtab
    au FileType go imap <buffer> <Tab> <C-R>=CleverTabOmni()<CR>
+   au FileType go setlocal foldmethod=indent foldnestmax=1
  augroup END
 
  augroup encrypted
