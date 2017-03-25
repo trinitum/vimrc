@@ -48,26 +48,18 @@ imap <A-DOWN> <ESC>gji
 imap <A-UP> <ESC>gki
 
 " Goto next/previous error
-map <C-DOWN> :cn<CR>
-map <C-UP> :cp<CR>
-imap <C-DOWN> <ESC>:cn<CR>i
-imap <C-UP> <ESC>:cp<CR>i
+map <C-N> :cn<CR>
+imap <C-N> <ESC>:cn<CR>i
 
 " Auto add matching }
 imap {<CR> {<CR>}<ESC>O
 
-nmap <C-K> :tabnew<CR>
-" toggle line numbering
-nmap <C-N> :set number!<CR>
 " disable search highlight
 nmap <C-H> :nohlsearch<CR>
 " resync syntax highlight
 nmap <C-P> :syn sync fromstart<CR>
 imap <C-P> <ESC>:syn sync fromstart<CR>i
 map <C-O> :set paste!<CR>
-
-" Make p in Visual mode replace the selected text with the "" register.
-vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
 " autocompletion with tab
 if has("insert_expand")
