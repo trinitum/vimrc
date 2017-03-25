@@ -241,6 +241,11 @@ if has("autocmd")
   au FileType tt2     imap <buffer> <C-T> <ESC>:setlocal filetype=tt2html<CR>i
  augroup END
 
+ augroup yaml
+  au!
+  au BufReadPre,FileReadPre *.yml,*yaml setlocal softtabstop=2 shiftwidth=2 expandtab
+ augroup END
+
  augroup xml
   au!
   au BufReadPre,FileReadPre *.xml,*xhtml setlocal noautoindent
