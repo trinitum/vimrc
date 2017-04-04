@@ -243,19 +243,14 @@ if has("autocmd")
 
  augroup yaml
   au!
-  au BufReadPre,FileReadPre *.yml,*yaml setlocal softtabstop=2 shiftwidth=2 expandtab
+  au FileType yaml setlocal softtabstop=2 shiftwidth=2 expandtab
  augroup END
 
  augroup xml
   au!
-  au BufReadPre,FileReadPre *.xml,*xhtml setlocal noautoindent
-  au BufReadPre,FileReadPre *.xml,*xhtml setlocal indentexpr=
-  au BufReadPre,FileReadPre *.xml,*xhtml setlocal shiftwidth=2 expandtab
- augroup END
-
- augroup html
-  au!
-  au FileType html setlocal identexpr=
+  au FileType xml,html setlocal noautoindent
+  au FileType xml,html setlocal indentexpr=
+  au FileType xml,html setlocal softtabstop=2 shiftwidth=2 expandtab
  augroup END
 
  augroup cprog
