@@ -57,8 +57,8 @@ imap {<CR> {<CR>}<ESC>O
 " disable search highlight
 nmap <C-H> :nohlsearch<CR>
 " resync syntax highlight
-nmap <C-P> :syn sync fromstart<CR>
-imap <C-P> <ESC>:syn sync fromstart<CR>i
+nmap <C-K> :syn sync fromstart<CR>
+imap <C-K> <ESC>:syn sync fromstart<CR>i
 map <C-O> :set paste!<CR>
 
 " autocompletion with tab
