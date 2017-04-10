@@ -197,6 +197,7 @@ if &term =~ "xterm" || &term =~ "256color"
     set cursorline
   else
     colorscheme desert256
+    set cursorline
     let g:CSApprox_loaded=1
     let g:CSApprox_verbose_level=0
   endif
