@@ -39,6 +39,8 @@ let g:VCSCommandMapPrefix='<Leader>v'
 let g:netrw_liststyle=3
 let g:netrw_winsize=25
 
+let g:ctrlp_open_new_file = 'r'
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
