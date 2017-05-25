@@ -26,6 +26,8 @@ set expandtab
 set statusline=%F%m%r%h%w\ [%{&ff}]\ %y\ [CHR=%b/0x%B]\ [POS=%04l,%03c(%03v)]\ [%p%%]\ [LEN=%L]
 set laststatus=2
 
+set autowrite
+
 let perl_fold=1
 let perl_nofold_packages=1
 let perl_fold_anonymous_subs=1
