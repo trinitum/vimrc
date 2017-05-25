@@ -52,8 +52,8 @@ imap <A-DOWN> <ESC>gji
 imap <A-UP> <ESC>gki
 
 " Goto next/previous error
-map <C-N> :cn<CR>
-imap <C-N> <ESC>:cn<CR>i
+map <C-N> :cnext<CR>
+nmap <C-M> :cprevious<CR>
 
 " Auto add matching }
 imap {<CR> {<CR>}<ESC>O
