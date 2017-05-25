@@ -282,9 +282,16 @@ if has("autocmd")
 
  augroup go
    au!
-   au FileType go setlocal softtabstop=8 shiftwidth=8 noexpandtab
+   au FileType go setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
    au FileType go imap <buffer> <Tab> <C-R>=CleverTabOmni()<CR>
-   au FileType go setlocal foldmethod=indent foldnestmax=1
+   au FileType go setlocal foldmethod=indent foldnestmax=1 foldlevel=1
+   au FileType go nmap <buffer> <silent> <LocalLeader>gb <Plug>(go-build)
+   au FileType go nmap <buffer> <silent> <LocalLeader>gl <Plug>(go-lint)
+   au FileType go nmap <buffer> <silent> <LocalLeader>gt <Plug>(go-test)
+   au FileType go nmap <buffer> <silent> <LocalLeader>gd <Plug>(go-doc)
+   au FileType go nmap <buffer> <silent> <LocalLeader>gv <Plug>(go-vet)
+   au FileType go nnoremap <buffer> <silent> <LocalLeader>gr :GoRun %<CR>
+   au FileType go nmap <buffer> <silent> <LocalLeader>gn <Plug>(go-rename)
  augroup END
 
  augroup encrypted
