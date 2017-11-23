@@ -9,4 +9,8 @@ install:
 	(cd ~/.vim/bundle/vim-elixir && git pull --rebase)
 	[ -d ~/.vim/bundle/ctrlp.vim ] || git clone https://github.com/ctrlpvim/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
 	(cd ~/.vim/bundle/ctrlp.vim && git pull --rebase)
+	[ -d ~/.vim/bundle/rust.vim ] || git clone https://github.com/rust-lang/rust.vim.git ~/.vim/bundle/rust.vim
+	(cd ~/.vim/bundle/rust.vim && git pull --rebase)
+	[ -d ~/.vim/bundle/vim-racer ] || git clone https://github.com/racer-rust/vim-racer.git ~/.vim/bundle/vim-racer
+	(cd ~/.vim/bundle/vim-racer && git pull --rebase)
 	vim -e -u NONE -c "helptags ~/.vim/doc" -c q
