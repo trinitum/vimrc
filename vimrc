@@ -294,6 +294,11 @@ if has("autocmd")
    au FileType go nmap <buffer> <silent> <LocalLeader>gn <Plug>(go-rename)
  augroup END
 
+ augroup rust
+   au!
+   au FileType rust imap <buffer> <Tab> <C-R>=CleverTabOmni()<CR>
+ augroup END
+
  augroup encrypted
     au!
 
