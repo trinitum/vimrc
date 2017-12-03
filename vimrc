@@ -43,6 +43,15 @@ let g:netrw_winsize=25
 
 let g:ctrlp_open_new_file = 'r'
 
+" some linters may execute the code while checking it, so to stay safe I only
+" allow a subset of linters that I need. 
+let g:ale_linters_explicit = 1
+let g:ale_linters = {
+            \ 'rust': ['cargo'],
+            \ 'go': ['gofmt', 'golint', 'go vet'],
+            \ }
+let g:ale_enabled = 0
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -282,6 +291,7 @@ if has("autocmd")
 
  augroup go
    au!
+   au FileType go let b:ale_enabled=1
    au FileType go setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
    au FileType go imap <buffer> <Tab> <C-R>=CleverTabOmni()<CR>
    au FileType go setlocal foldmethod=indent foldnestmax=1 foldlevel=1
@@ -296,6 +306,7 @@ if has("autocmd")
 
  augroup rust
    au!
+   au FileType rust let b:ale_enabled=1
    au FileType rust imap <buffer> <Tab> <C-R>=CleverTabOmni()<CR>
  augroup END
 
