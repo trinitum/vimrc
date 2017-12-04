@@ -13,4 +13,6 @@ install:
 	(cd ~/.vim/bundle/rust.vim && git pull --rebase)
 	[ -d ~/.vim/bundle/vim-racer ] || git clone --depth=1 https://github.com/racer-rust/vim-racer.git ~/.vim/bundle/vim-racer
 	(cd ~/.vim/bundle/vim-racer && git pull --rebase)
+	[ -d ~/.vim/bundle/syntastic ] || git clone --depth=1 https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle/syntastic
+	(cd ~/.vim/bundle/syntastic && git pull --rebase)
 	vim -e -u NONE -c "helptags ~/.vim/doc" -c q

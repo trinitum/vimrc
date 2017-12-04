@@ -43,14 +43,19 @@ let g:netrw_winsize=25
 
 let g:ctrlp_open_new_file = 'r'
 
-" some linters may execute the code while checking it, so to stay safe I only
-" allow a subset of linters that I need. 
-let g:ale_linters_explicit = 1
-let g:ale_linters = {
-            \ 'rust': ['cargo'],
-            \ 'go': ['gofmt', 'golint', 'go vet'],
-            \ }
-let g:ale_enabled = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_rust_checkers = ['cargo']
+let g:syntastic_go_checkers = ['gofmt', 'govet', 'golint']
+" some checkers may potentially execute the files being checked, perl for
+" example, so I prefer to only run them explicitly
+let g:syntastic_mode_map = {
+            \ 'mode': 'passive',
+            \ 'active_filetypes': [],
+            \ 'passive_filetypes': []}
+nmap <Leader>ss :SyntasticCheck<CR>
+nmap <Leader>se :Errors<CR>
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -291,7 +296,6 @@ if has("autocmd")
 
  augroup go
    au!
-   au FileType go let b:ale_enabled=1
    au FileType go setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
    au FileType go imap <buffer> <Tab> <C-R>=CleverTabOmni()<CR>
    au FileType go setlocal foldmethod=indent foldnestmax=1 foldlevel=1
@@ -306,7 +310,6 @@ if has("autocmd")
 
  augroup rust
    au!
-   au FileType rust let b:ale_enabled=1
    au FileType rust imap <buffer> <Tab> <C-R>=CleverTabOmni()<CR>
  augroup END
 
