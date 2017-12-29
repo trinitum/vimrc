@@ -296,9 +296,10 @@ if has("autocmd")
 
  augroup go
    au!
-   au FileType go setlocal tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
+   au FileType go setlocal tabstop=4 softtabstop=0 shiftwidth=0 noexpandtab
    au FileType go imap <buffer> <Tab> <C-R>=CleverTabOmni()<CR>
    au FileType go setlocal foldmethod=indent foldnestmax=1 foldlevel=1
+   au FileType go nnoremap <buffer> <silent> <C-w>] :<C-U>call go#def#Jump("vsplit")<CR>
    au FileType go nmap <buffer> <silent> <LocalLeader>gb <Plug>(go-build)
    au FileType go nmap <buffer> <silent> <LocalLeader>gl <Plug>(go-lint)
    au FileType go nmap <buffer> <silent> <LocalLeader>gt <Plug>(go-test)
