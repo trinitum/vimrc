@@ -7,6 +7,10 @@ install:
 	[ -d ~/.vim/bundle/ctrlp.vim ] || \
 		git clone --depth=1 https://github.com/ctrlpvim/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
 	(cd ~/.vim/bundle/ctrlp.vim && git pull --rebase)
+	# Unimpaired
+	[ -d ~/.vim/bundle/vim-unimpaired ] || \
+		git clone --depth=1 https://github.com/tpope/vim-unimpaired.git ~/.vim/bundle/vim-unimpaired
+	(cd ~/.vim/bundle/vim-unimpaired && git pull --rebase)
 	# Syntastic
 	[ -d ~/.vim/bundle/syntastic ] || \
 		git clone --depth=1 https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle/syntastic
