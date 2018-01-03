@@ -35,9 +35,6 @@ let perl_include_pod=0
 let c_no_comment_fold=1
 let g:omni_sql_no_default_maps=1
 
-" map vscommand to \v
-let g:VCSCommandMapPrefix='<Leader>v'
-
 let g:netrw_liststyle=3
 let g:netrw_winsize=25
 
