@@ -61,7 +61,7 @@ nmap <Leader>vb :Gblame<CR>
 nmap <Leader>vc :Gcommit<CR>
 nmap <Leader>vw :Gwrite<CR>
 nmap <Leader>va :Gcommit --amend<CR>
-nmap <Leader>vp :Gpedit! diff<CR>wincmd P<CR><C-W>_
+nmap <Leader>vp :Gpedit! diff<CR>:wincmd P<CR><C-W>_
 nmap <Leader>vd :Gdiff
 nmap <Leader>vg :Git! log --pretty=format:'\%h \%an \%ad \%s' --date=short --graph
 
