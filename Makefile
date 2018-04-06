@@ -11,6 +11,10 @@ install:
 	[ -d ~/.vim/bundle/vim-unimpaired ] || \
 		git clone --depth=1 https://github.com/tpope/vim-unimpaired.git ~/.vim/bundle/vim-unimpaired
 	(cd ~/.vim/bundle/vim-unimpaired && git pull --rebase)
+	# Fugitive
+	[ -d ~/.vim/bundle/vim-fugitive ] || \
+		git clone --depth=1 https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
+	(cd ~/.vim/bundle/vim-fugitive && git pull --rebase)
 	# Syntastic
 	[ -d ~/.vim/bundle/syntastic ] || \
 		git clone --depth=1 https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle/syntastic
