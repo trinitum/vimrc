@@ -106,90 +106,9 @@ if has("insert_expand")
     endfunction
 endif
 
-if exists('$EMAIL') && $EMAIL != ''
-    let g:full_user_email =$EMAIL
-elseif exists('$EMAIL_ADDRESS') && $EMAIL_ADDRESS != ''
-    let g:full_user_email =$EMAIL_ADDRESS
-else
-    let login=system('whoami')
-    if v:shell_error
-	let login = 'nobody'
-    else
-	let newline = stridx(login, "\n")
-        if newline != -1
-             let login = strpart(login, 0, newline)
-        endif
-    endif
-
-    " Try to get the full name from gecos field in /etc/passwd.
-    if filereadable('/etc/passwd')
-        for line in readfile('/etc/passwd')
-            if line =~ '^' . login
-                let name = substitute(line,'^\%([^:]*:\)\{4}\([^:]*\):.*$','\1','')
-                " Only keep stuff before the first comma.
-                let comma = stridx(name, ',')
-                if comma != -1
-                    let name = strpart(name, 0, comma)
-                endif
-                " And substitute & in the real name with the login of our user.
-                let amp = stridx(name, '&')
-                if amp != -1
-                    let name = strpart(name, 0, amp) . toupper(login[0]) . 
-	                       \ strpart(login, 1) . strpart(name, amp + 1)
-                endif
-            endif
-        endfor
-    endif
-
-    " If we haven't found a name, try to gather it from other places.
-    if !exists('name')
-        " Maybe the environment has something of interest.
-        if exists("$NAME")
-            let name = $NAME
-        else
-            " No? well, use the login name and capitalize first
-            " character.
-            let name = toupper(login[0]) . strpart(login, 1)
-        endif
-    endif
-
-    " Get our hostname.
-    let hostname = system('hostname')
-    if v:shell_error
-       let hostname = 'localhost'
-    else
-        let newline = stridx(hostname, "\n")
-        if newline != -1
-            let hostname = strpart(hostname, 0, newline)
-        endif
-    endif
-
-    " And finally set the username.
-    let g:full_user_email = name . '  <' . login . '@' . hostname . '>'
-endif
-
 function ChlogDate()
-    call append(line('.') - 1, strftime("%a %b %e %Y "). g:full_user_email)
+    call append(line('.') - 1, strftime("%a %b %e %Y "))
 endfunction
-
-let g:email_match_list = matchstr(g:full_user_email, '\([^<]\{-1,}\)\s\+<\([^>]\)>')
-let g:user_name        = g:email_match_list[1]
-let g:user_email       = g:email_match_list[2]
-let g:Perl_AuthorName  = g:user_name
-let g:Perl_Email       = g:user_email
-let g:BASH_AuthorName  = g:user_name
-let g:BASH_Email       = g:user_email
-
-function InsEmail()
-    let cline = getline('.')
-    let curpos = col('.')
-    let new_line_value = strpart(cline, 0, col('.')) . g:full_user_email . strpart(cline, col('.'))
-    call setline('.', new_line_value)
-    call setpos('.', [ 0, line('.'), curpos + len(g:full_user_email) + 1, 0 ])
-endfunction
-
-map <Leader>mail :call InsEmail()<CR>
-imap <Leader>mail <ESC>:call InsEmail()<CR>i
 
 if has("cscope") && filereadable("/usr/bin/cscope")
    set csprg=/usr/bin/cscope
