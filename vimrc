@@ -40,8 +40,6 @@ let g:netrw_winsize=25
 
 let g:ctrlp_open_new_file = 'r'
 
-let g:rustfmt_command='rustup run nightly rustfmt'
-
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
