@@ -227,6 +227,7 @@ if has("autocmd")
    au FileType go setlocal foldmethod=indent foldnestmax=1 foldlevel=1
    au FileType go nnoremap <buffer> <silent> <C-w>] :<C-U>call go#def#Jump("vsplit")<CR>
    au FileType go nmap <buffer> <silent> <LocalLeader>gb <Plug>(go-build)
+   au FileType go nmap <buffer> <silent> <LocalLeader>gy <Plug>(go-test-compile)
    au FileType go nmap <buffer> <silent> <LocalLeader>gl <Plug>(go-lint)
    au FileType go nmap <buffer> <silent> <LocalLeader>gt <Plug>(go-test)
    au FileType go nmap <buffer> <silent> <LocalLeader>gd <Plug>(go-doc)
