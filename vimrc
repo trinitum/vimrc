@@ -64,6 +64,9 @@ nmap <Leader>vp :Gpedit! diff<CR>:wincmd P<CR><C-W>_
 nmap <Leader>vd :Gdiff<CR>
 nmap <Leader>vg :Gpedit! log --pretty=format:'\%h \%an \%ad \%s' --date=short --graph<CR>:wincmd P<CR><C-W>_
 
+map <Leader>si :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+            \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+            \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
