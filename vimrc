@@ -241,6 +241,11 @@ if has("autocmd")
    au FileType rust imap <buffer> <Tab> <C-R>=CleverTabOmni()<CR>
  augroup END
 
+ augroup gitcommit
+     au!
+     au FileType gitcommit nmap <Leader>vp :Gpedit! diff --cached<CR>:wincmd P<CR><C-W>_
+ augroup END
+
  augroup encrypted
     au!
 
