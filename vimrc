@@ -173,18 +173,6 @@ if has("autocmd")
   au FileType perl inoremap <buffer> <Tab> <C-R>=CleverTab()<CR>
  augroup END
 
- augroup tt2
-  au!
-  au BufWinLeave *.tt,*.tt2 mkview
-  au BufWinEnter *.tt,*.tt2 silent loadview
-  au FileType tt2html setlocal indentexpr=
-  au FileType tt2html map <buffer> <C-T> :setlocal filetype=tt2<CR>
-  au FileType tt2html imap <buffer> <C-T> <ESC>:setlocal filetype=tt2<CR>i
-  au FileType tt2     setlocal indentexpr=
-  au FileType tt2     map <buffer> <C-T> :setlocal filetype=tt2html<CR>
-  au FileType tt2     imap <buffer> <C-T> <ESC>:setlocal filetype=tt2html<CR>i
- augroup END
-
  augroup yaml
   au!
   au FileType yaml setlocal softtabstop=2 shiftwidth=2 expandtab
