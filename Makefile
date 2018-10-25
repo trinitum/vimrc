@@ -22,9 +22,7 @@ install:
 	# Go
 	[ -d ~/.vim/bundle/vim-go ] || \
 		git clone --depth=1 https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
-	(cd ~/.vim/bundle/vim-go && \
-		git fetch && \
-		git checkout "$$(git describe --tags `git rev-list --tags --max-count=1`)")
+	(cd ~/.vim/bundle/vim-go && git pull --rebase)
 	# Rust
 	[ -d ~/.vim/bundle/rust.vim ] || \
 		git clone --depth=1 https://github.com/rust-lang/rust.vim.git ~/.vim/bundle/rust.vim
