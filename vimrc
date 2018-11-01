@@ -231,7 +231,7 @@ if has("autocmd")
 
  augroup gitcommit
      au!
-     au FileType gitcommit nmap <Leader>vp :Gpedit! diff --cached<CR>:wincmd P<CR><C-W>_
+     au FileType gitcommit nmap <buffer> <Leader>vp :Gpedit! diff --cached<CR>:wincmd P<CR><C-W>_
  augroup END
 
  augroup encrypted
