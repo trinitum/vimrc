@@ -86,6 +86,14 @@ nmap <C-K> :syn sync fromstart<CR>
 imap <C-K> <ESC>:syn sync fromstart<CR>i
 map <C-O> :set paste!<CR>
 
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
+
 " autocompletion with tab
 if has("insert_expand")
     function! CleverTab()
@@ -228,7 +236,7 @@ if has("autocmd")
 
  augroup rust
    au!
-   au FileType rust imap <buffer> <Tab> <C-R>=CleverTabOmni()<CR>
+   au FileType rust inoremap <buffer> <Tab> <C-R>=CleverTab()<CR>
  augroup END
 
  augroup gitcommit

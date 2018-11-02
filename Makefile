@@ -1,34 +1,15 @@
+GH_BUNDLES=ctrlpvim/ctrlp.vim tpope/vim-unimpaired tpope/vim-fugitive vim-syntastic/syntastic \
+	   fatih/vim-go rust-lang/rust.vim prabirshrestha/async.vim prabirshrestha/vim-lsp \
+	   prabirshrestha/asyncomplete.vim prabirshrestha/asyncomplete-lsp.vim
 
 install:
 	install -m644 vimrc ~/.vimrc
 	[ -d ~/.vim ] || mkdir ~/.vim
 	cp -r vim/* ~/.vim/
-	# CtrlP
-	[ -d ~/.vim/bundle/ctrlp.vim ] || \
-		git clone --depth=1 https://github.com/ctrlpvim/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
-	(cd ~/.vim/bundle/ctrlp.vim && git pull --rebase)
-	# Unimpaired
-	[ -d ~/.vim/bundle/vim-unimpaired ] || \
-		git clone --depth=1 https://github.com/tpope/vim-unimpaired.git ~/.vim/bundle/vim-unimpaired
-	(cd ~/.vim/bundle/vim-unimpaired && git pull --rebase)
-	# Fugitive
-	[ -d ~/.vim/bundle/vim-fugitive ] || \
-		git clone --depth=1 https://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
-	(cd ~/.vim/bundle/vim-fugitive && git pull --rebase)
-	# Syntastic
-	[ -d ~/.vim/bundle/syntastic ] || \
-		git clone --depth=1 https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle/syntastic
-	(cd ~/.vim/bundle/syntastic && git pull --rebase)
-	# Go
-	[ -d ~/.vim/bundle/vim-go ] || \
-		git clone --depth=1 https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
-	(cd ~/.vim/bundle/vim-go && git pull --rebase)
-	# Rust
-	[ -d ~/.vim/bundle/rust.vim ] || \
-		git clone --depth=1 https://github.com/rust-lang/rust.vim.git ~/.vim/bundle/rust.vim
-	(cd ~/.vim/bundle/rust.vim && git pull --rebase)
-	[ -d ~/.vim/bundle/vim-racer ] || \
-		git clone --depth=1 https://github.com/racer-rust/vim-racer.git ~/.vim/bundle/vim-racer
-	(cd ~/.vim/bundle/vim-racer && git pull --rebase)
+	# install plugins
+	cd ~/.vim/bundle && for bundle in $(GH_BUNDLES); do \
+		echo $$bundle; \
+		[ -d $${bundle##*/} ] || git clone https://github.com/$$bundle; \
+		( cd $${bundle##*/} && git pull --rebase ); done
 	# Generate doc tags
 	vim -e -c "Helptags" -c q
