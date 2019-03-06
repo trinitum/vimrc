@@ -43,19 +43,11 @@ let g:netrw_winsize=25
 
 let g:ctrlp_open_new_file = 'r'
 
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_rust_checkers = ['cargo']
-let g:syntastic_go_checkers = ['gofmt', 'govet', 'golint']
-" some checkers may potentially execute the files being checked, perl for
-" example, so I prefer to only run them explicitly
-let g:syntastic_mode_map = {
-            \ 'mode': 'passive',
-            \ 'active_filetypes': [],
-            \ 'passive_filetypes': []}
-nmap <Leader>ss :SyntasticCheck<CR>
-nmap <Leader>se :Errors<CR>
+let g:neomake_go_enabled_makers = ['go', 'govet']
+let g:neomake_rust_enabled_makers = ['cargo', 'clippy']
+
+nmap <Leader>nm :Neomake<CR>
+nmap <Leader>nc :NeomakeClean<CR>
 
 nmap <Leader>vs :aboveleft Gstatus<CR>
 nmap <Leader>vb :Gblame<CR>
