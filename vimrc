@@ -36,6 +36,7 @@ let c_no_comment_fold=1
 let g:omni_sql_no_default_maps=1
 let g:go_fmt_command = "goimports"
 let g:go_gocode_propose_source=0
+let g:rustfmt_autosave=1
 
 let g:netrw_liststyle=3
 let g:netrw_winsize=25
