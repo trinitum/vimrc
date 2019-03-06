@@ -57,7 +57,7 @@ let g:syntastic_mode_map = {
 nmap <Leader>ss :SyntasticCheck<CR>
 nmap <Leader>se :Errors<CR>
 
-nmap <Leader>vs :Gstatus<CR>
+nmap <Leader>vs :aboveleft Gstatus<CR>
 nmap <Leader>vb :Gblame<CR>
 nmap <Leader>vc :Gcommit<CR>
 nmap <Leader>vw :Gwrite<CR>
