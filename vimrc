@@ -36,6 +36,9 @@ let c_no_comment_fold=1
 let g:omni_sql_no_default_maps=1
 let g:go_fmt_command = "goimports"
 let g:go_gocode_propose_source=0
+
+let g:rust_bang_comment_leader=1
+let g:rust_fold=2
 let g:rustfmt_autosave=1
 
 let g:netrw_liststyle=3
@@ -230,6 +233,10 @@ if has("autocmd")
  augroup rust
    au!
    au FileType rust inoremap <buffer> <Tab> <C-R>=CleverTab()<CR>
+   au FileType rust nmap <buffer> <silent> <LocalLeader>cb :Cbuild<CR>
+   au FileType rust nmap <buffer> <silent> <LocalLeader>cr :Crun<CR>
+   au FileType rust nmap <buffer> <silent> <LocalLeader>ct :Ctest<CR>
+   au FileType rust nmap <buffer> <silent> <LocalLeader>cu :Cupdate<CR>
  augroup END
 
  augroup gitcommit
