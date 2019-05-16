@@ -38,7 +38,7 @@ let g:go_fmt_command = "goimports"
 let g:go_gocode_propose_source=0
 
 let g:rust_bang_comment_leader=1
-let g:rust_fold=2
+let g:rust_fold=1
 let g:rustfmt_autosave=1
 
 let g:netrw_liststyle=3
@@ -226,7 +226,7 @@ if has("autocmd")
    au FileType go setlocal tabstop=4 softtabstop=0 shiftwidth=0 noexpandtab
    au FileType go imap <buffer> <Tab> <C-R>=CleverTab()<CR>
    au FileType go setlocal foldmethod=indent foldnestmax=1 foldlevel=1
-   au FileType go nnoremap <buffer> <silent> <C-w>] :LspDefinition<CR>
+   au FileType go nnoremap <buffer> <silent> <C-]> :LspDefinition<CR>
    au FileType go nmap <buffer> <silent> <LocalLeader>gb <Plug>(go-build)
    au FileType go nmap <buffer> <silent> <LocalLeader>gy <Plug>(go-test-compile)
    au FileType go nmap <buffer> <silent> <LocalLeader>gl <Plug>(go-lint)
@@ -241,6 +241,7 @@ if has("autocmd")
  augroup rust
    au!
    au FileType rust inoremap <buffer> <Tab> <C-R>=CleverTab()<CR>
+   au FileType rust nnoremap <buffer> <silent> <C-]> :LspDefinition<CR>
    au FileType rust nmap <buffer> <silent> <LocalLeader>cb :Cbuild<CR>
    au FileType rust nmap <buffer> <silent> <LocalLeader>cr :Crun<CR>
    au FileType rust nmap <buffer> <silent> <LocalLeader>ct :Ctest<CR>
