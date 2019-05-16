@@ -90,6 +90,15 @@ if executable('rls')
         \ })
 endif
 
+if executable('gopls')
+    let g:go_autocomplete_enabled=0
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'gopls',
+        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+        \ 'whitelist': ['go'],
+        \ })
+endif
+
 " autocompletion with tab
 if has("insert_expand")
     function! CleverTab()
@@ -215,9 +224,9 @@ if has("autocmd")
  augroup go
    au!
    au FileType go setlocal tabstop=4 softtabstop=0 shiftwidth=0 noexpandtab
-   au FileType go imap <buffer> <Tab> <C-R>=CleverTabOmni()<CR>
+   au FileType go imap <buffer> <Tab> <C-R>=CleverTab()<CR>
    au FileType go setlocal foldmethod=indent foldnestmax=1 foldlevel=1
-   au FileType go nnoremap <buffer> <silent> <C-w>] :<C-U>call go#def#Jump("vsplit")<CR>
+   au FileType go nnoremap <buffer> <silent> <C-w>] :LspDefinition<CR>
    au FileType go nmap <buffer> <silent> <LocalLeader>gb <Plug>(go-build)
    au FileType go nmap <buffer> <silent> <LocalLeader>gy <Plug>(go-test-compile)
    au FileType go nmap <buffer> <silent> <LocalLeader>gl <Plug>(go-lint)
@@ -225,7 +234,6 @@ if has("autocmd")
    au FileType go nmap <buffer> <silent> <LocalLeader>gd <Plug>(go-doc)
    au FileType go nmap <buffer> <silent> <LocalLeader>gv <Plug>(go-vet)
    au FileType go nnoremap <buffer> <silent> <LocalLeader>gr :GoRun %<CR>
-   au FileType go nmap <buffer> <silent> <LocalLeader>gn <Plug>(go-rename)
    au FileType go inoremap <buffer> <C-G> <ESC>:GoImport<Space>
    au BufWritePost *.go silent! GoInstall
  augroup END
