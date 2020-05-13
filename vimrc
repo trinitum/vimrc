@@ -37,6 +37,7 @@ let g:omni_sql_no_default_maps=1
 let g:go_fmt_command = "goimports"
 let g:go_gocode_propose_source=0
 let g:go_def_mapping_enabled=0
+let g:go_code_completion_enabled=0
 
 let g:rust_bang_comment_leader=1
 let g:rust_fold=1
@@ -46,12 +47,6 @@ let g:netrw_liststyle=3
 let g:netrw_winsize=25
 
 let g:ctrlp_open_new_file = 'r'
-
-let g:neomake_go_enabled_makers = ['go', 'govet']
-let g:neomake_rust_enabled_makers = ['cargo', 'clippy']
-
-nmap <Leader>nm :Neomake<CR>
-nmap <Leader>nc :NeomakeClean<CR>
 
 nmap <Leader>vs :aboveleft Gstatus<CR>
 nmap <Leader>vb :Gblame<CR>
@@ -83,10 +78,12 @@ nmap <C-K> :syn sync fromstart<CR>
 imap <C-K> <ESC>:syn sync fromstart<CR>i
 map <C-O> :set paste!<CR>
 
+let g:lsp_diagnostics_echo_cursor=1
+let g:lsp_text_edit_enabled=0
 if executable('rls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'cmd': {server_info->['ra_lsp_server']},
         \ 'whitelist': ['rust'],
         \ })
 endif
@@ -99,6 +96,9 @@ if executable('gopls')
         \ 'whitelist': ['go'],
         \ })
 endif
+
+set completeopt=menuone,popup,noinsert,noselect
+let g:asyncomplete_auto_completeopt=0
 
 " autocompletion with tab
 if has("insert_expand")
