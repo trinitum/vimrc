@@ -49,13 +49,13 @@ let g:netrw_winsize=25
 let g:ctrlp_open_new_file = 'r'
 
 nmap <Leader>vs :aboveleft Gstatus<CR>
-nmap <Leader>vb :Gblame<CR>
-nmap <Leader>vc :Gcommit<CR>
+nmap <Leader>vb :Git blame<CR>
+nmap <Leader>vc :Git commit<CR>
 nmap <Leader>vw :Gwrite<CR>
-nmap <Leader>va :Gcommit --amend<CR>
-nmap <Leader>vp :Gpedit! diff<CR>:wincmd P<CR><C-W>_
+nmap <Leader>va :Git commit --amend<CR>
+nmap <Leader>vp :Git! --paginate diff<CR>:wincmd P<CR><C-W>_
 nmap <Leader>vd :Gdiff<CR>
-nmap <Leader>vg :Gpedit! log --pretty=format:'\%h \%an \%ad \%s' --date=short --graph<CR>:wincmd P<CR><C-W>_
+nmap <Leader>vg :Git! --paginate log --pretty=format:'\%h \%an \%ad \%s' --date=short --graph<CR>:wincmd P<CR><C-W>_
 
 map <Leader>si :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
