@@ -48,7 +48,7 @@ let g:netrw_winsize=25
 
 let g:ctrlp_open_new_file = 'r'
 
-nmap <Leader>vs :aboveleft Gstatus<CR>
+nmap <Leader>vs :aboveleft Git<CR>
 nmap <Leader>vb :Git blame<CR>
 nmap <Leader>vc :Git commit<CR>
 nmap <Leader>vw :Gwrite<CR>
