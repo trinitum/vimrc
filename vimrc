@@ -38,6 +38,7 @@ let g:go_fmt_command = "goimports"
 let g:go_gocode_propose_source=0
 let g:go_def_mapping_enabled=0
 let g:go_code_completion_enabled=0
+let g:go_template_use_pkg=1
 
 let g:rust_bang_comment_leader=1
 let g:rust_fold=1
