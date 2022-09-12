@@ -80,10 +80,10 @@ map <C-O> :set paste!<CR>
 
 let g:lsp_diagnostics_echo_cursor=1
 let g:lsp_text_edit_enabled=0
-if executable('rls')
+if executable('rust-analyzer')
     au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['ra_lsp_server']},
+        \ 'name': 'Rust Language Server',
+        \ 'cmd': {server_info->['rust-analyzer']},
         \ 'whitelist': ['rust'],
         \ })
 endif
