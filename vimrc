@@ -231,10 +231,11 @@ if has("autocmd")
    au FileType go nnoremap <buffer> <silent> <C-]> :LspDefinition<CR>
    au FileType go nmap <buffer> <silent> <LocalLeader>gb <Plug>(go-build)
    au FileType go nmap <buffer> <silent> <LocalLeader>gy <Plug>(go-test-compile)
-   au FileType go nmap <buffer> <silent> <LocalLeader>gl <Plug>(go-lint)
    au FileType go nmap <buffer> <silent> <LocalLeader>gt <Plug>(go-test)
    au FileType go nmap <buffer> <silent> <LocalLeader>gd <Plug>(go-doc)
-   au FileType go nmap <buffer> <silent> <LocalLeader>gv <Plug>(go-vet)
+   au FileType go nmap <buffer> <silent> <LocalLeader>gf :GoFillStruct<CR>
+   au FileType go nmap <buffer> <silent> <LocalLeader>ge :GoIfErr<CR>
+   au FileType go nmap <buffer> <silent> <LocalLeader>gj :GoAddTags<CR>
    au FileType go nnoremap <buffer> <silent> <LocalLeader>gr :GoRun %<CR>
    au FileType go inoremap <buffer> <C-G> <ESC>:GoImport<Space>
    au BufWritePost *.go silent! GoInstall
