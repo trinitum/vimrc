@@ -1,4 +1,4 @@
-GH_BUNDLES=ctrlpvim/ctrlp.vim tpope/vim-unimpaired tpope/vim-fugitive \
+GH_BUNDLES=ctrlpvim/ctrlp.vim tpope/vim-unimpaired tpope/vim-fugitive tpope/vim-vinegar \
 	   fatih/vim-go rust-lang/rust.vim prabirshrestha/async.vim prabirshrestha/vim-lsp \
 	   prabirshrestha/asyncomplete.vim prabirshrestha/asyncomplete-lsp.vim
 
