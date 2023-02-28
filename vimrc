@@ -86,11 +86,6 @@ map <Leader>si :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
-map <A-DOWN> gj
-map <A-UP> gk
-imap <A-DOWN> <ESC>gji
-imap <A-UP> <ESC>gki
-
 " Auto add matching }
 imap {<CR> {<CR>}<ESC>O
 
