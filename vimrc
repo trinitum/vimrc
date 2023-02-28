@@ -3,6 +3,25 @@ if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=ucs-bom,utf-8,latin1
 endif
 
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2
+  syntax on
+  set hlsearch
+endif
+
+" Fix the number of colors for terminal
+if &term =~ '256color'
+  if has('termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+  endif
+  colorscheme desert
+  set cursorline
+  hi CursorLine guibg=#222222
+endif
+
 set viewoptions=cursor,folds
 set nocompatible
 set backspace=indent,eol,start
@@ -32,8 +51,10 @@ let perl_fold=1
 let perl_nofold_packages=1
 let perl_fold_anonymous_subs=1
 let perl_include_pod=0
+
 let c_no_comment_fold=1
 let g:omni_sql_no_default_maps=1
+
 let g:go_fmt_command = "goimports"
 let g:go_gocode_propose_source=0
 let g:go_def_mapping_enabled=0
@@ -61,6 +82,7 @@ nmap <Leader>vg :Git! --paginate log --pretty=format:'\%h \%an \%ad \%s' --date=
 map <Leader>si :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -147,27 +169,6 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
-
-" Fix number of colors for xterm
-if &term =~ "xterm" || &term =~ "256color"
-  set t_Co=256
-  if has('gui')
-    colorscheme desert
-    set cursorline
-  else
-    colorscheme desert256
-    set cursorline
-    let g:CSApprox_loaded=1
-    let g:CSApprox_verbose_level=0
-  endif
-endif
-
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
 
 filetype plugin indent on
 
