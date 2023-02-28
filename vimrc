@@ -98,7 +98,7 @@ if executable('gopls')
         \ })
 endif
 
-set completeopt=menuone,popup,noinsert,noselect
+set completeopt=menuone,noinsert,noselect
 let g:asyncomplete_auto_completeopt=0
 
 " autocompletion with tab
