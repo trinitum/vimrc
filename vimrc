@@ -12,14 +12,14 @@ endif
 
 " Fix the number of colors for terminal
 if &term =~ '256color'
-  if has('termguicolors')
+  colorscheme desert
+  set cursorline
+  if has('termguicolors') && $TERM_PROGRAM !~ "Apple_Terminal"
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
   endif
-  colorscheme desert
-  set cursorline
-  hi CursorLine guibg=#222222
+  hi CursorLine guibg=#1c1c1c ctermbg=234
 endif
 
 set viewoptions=cursor,folds
