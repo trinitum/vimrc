@@ -79,6 +79,12 @@ nmap <Leader>vp :Git! --paginate diff<CR>:wincmd P<CR><C-W>_
 nmap <Leader>vd :Gdiff<CR>
 nmap <Leader>vg :Git! --paginate log --pretty=format:'\%h \%an \%ad \%s' --date=short --graph<CR>:wincmd P<CR><C-W>_
 
+nmap <Leader>fb :Buffers<CR>
+nmap <Leader>fc :Commits<CR>
+nmap <Leader>ff :Files<CR>
+nmap <expr> <Leader>fg ':Rg '.expand('<cword>').'<CR>'
+nmap <Leader>fh :History<CR>
+
 map <Leader>si :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
             \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
             \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
