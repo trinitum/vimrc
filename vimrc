@@ -19,7 +19,7 @@ if &term =~ '256color'
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
   endif
-  hi CursorLine guibg=#1c1c1c ctermbg=234
+  hi CursorLine guibg=#2c1c1c ctermbg=234 cterm=none
 endif
 
 set viewoptions=cursor,folds
