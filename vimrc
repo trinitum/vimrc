@@ -24,6 +24,7 @@ endif
 
 set viewoptions=cursor,folds
 set nocompatible
+set nomodeline
 set backspace=indent,eol,start
 set ai			" always set autoindenting on
 set nobackup		" do not keep a backup file, use versions instead
