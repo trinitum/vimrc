@@ -20,6 +20,7 @@ if &term =~ '256color'
     set termguicolors
   endif
   hi CursorLine guibg=#2c1c1c ctermbg=234 cterm=none
+  hi SignColumn guibg=#c2bfa5 ctermbg=144
 endif
 
 set viewoptions=cursor,folds
@@ -43,6 +44,7 @@ set shiftwidth=4
 set tw=0
 set expandtab
 
+set signcolumn=yes
 set statusline=%F%m%r%h%w\ [%{&ff}]\ %y\ [CHR=%b/0x%B]\ [POS=%04l,%03c(%03v)]\ [%p%%]\ [LEN=%L]
 set laststatus=2
 
