@@ -124,6 +124,14 @@ if executable('gopls')
         \ })
 endif
 
+if executable('clangd')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd']},
+        \ 'whitelist': ['c', 'cpp'],
+        \ })
+endif
+
 set completeopt=menuone,noinsert,noselect
 let g:asyncomplete_auto_completeopt=0
 
@@ -210,6 +218,8 @@ if has("autocmd")
   au!
   au FileType c,cpp setlocal cindent formatoptions=crql
   au FileType c,cpp setlocal foldmethod=syntax foldcolumn=2 foldnestmax=1
+  au FileType c,cpp imap <buffer> <Tab> <C-R>=CleverTab()<CR>
+  au FileType c,cpp nnoremap <buffer> <silent> <C-]> :LspDefinition<CR>
  augroup END
 
  augroup chlog
