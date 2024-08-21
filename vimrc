@@ -151,7 +151,7 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> gc <plug>(lsp-preview-close)
 
     nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
-    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+    nnoremap <buffer> <expr><c-b> lsp#scroll(-4)
 endfunction
 
 if has("autocmd")
