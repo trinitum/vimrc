@@ -107,6 +107,7 @@ map <C-O> :set paste!<CR>
 
 let g:lsp_diagnostics_echo_cursor=1
 let g:lsp_text_edit_enabled=0
+let g:lsp_diagnostics_virtual_text_enabled=0
 if executable('rust-analyzer')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'Rust Language Server',
