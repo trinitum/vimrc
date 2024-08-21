@@ -106,13 +106,15 @@ imap <C-K> <ESC>:syn sync fromstart<CR>i
 map <C-O> :set paste!<CR>
 
 let g:lsp_diagnostics_echo_cursor=1
-let g:lsp_text_edit_enabled=0
 let g:lsp_diagnostics_virtual_text_enabled=0
+let g:lsp_preview_keep_focus=0
+let g:lsp_text_edit_enabled=0
+
 if executable('rust-analyzer')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'Rust Language Server',
         \ 'cmd': {server_info->['rust-analyzer']},
-        \ 'whitelist': ['rust'],
+        \ 'allowlist': ['rust'],
         \ })
 endif
 
@@ -121,17 +123,45 @@ if executable('gopls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'gopls',
         \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
-        \ 'whitelist': ['go'],
+        \ 'allowlist': ['go'],
         \ })
 endif
 
 if executable('clangd')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'clangd',
-        \ 'cmd': {server_info->['clangd']},
-        \ 'whitelist': ['c', 'cpp'],
+        \ 'cmd': {server_info->['clangd', '--query-driver=/opt/homebrew/bin/arm-none-eabi-gcc']},
+        \ 'allowlist': ['c', 'cpp'],
         \ })
 endif
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> <C-]> <plug>(lsp-definition)
+    nmap <buffer> [d <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]d <plug>(lsp-next-diagnostic)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> <Leader>lr <plug>(lsp-rename)
+    nmap <buffer> <silent> <Leader>ls :LspStopServer<CR>
+    nmap <buffer> K <plug>(lsp-hover)
+    nmap <buffer> gp <plug>(lsp-preview-focus)
+    nmap <buffer> gc <plug>(lsp-preview-close)
+
+    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+endfunction
+
+if has("autocmd")
+    augroup lsp_install
+        au!
+        " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+        autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+    augroup END
+endif
+
 
 set completeopt=menuone,noinsert,noselect
 let g:asyncomplete_auto_completeopt=0
@@ -220,7 +250,6 @@ if has("autocmd")
   au FileType c,cpp setlocal cindent formatoptions=crql
   au FileType c,cpp setlocal foldmethod=syntax foldcolumn=2 foldnestmax=1
   au FileType c,cpp imap <buffer> <Tab> <C-R>=CleverTab()<CR>
-  au FileType c,cpp nnoremap <buffer> <silent> <C-]> :LspDefinition<CR>
  augroup END
 
  augroup chlog
@@ -244,7 +273,6 @@ if has("autocmd")
    au FileType go setlocal tabstop=4 softtabstop=0 shiftwidth=0 noexpandtab
    au FileType go imap <buffer> <Tab> <C-R>=CleverTab()<CR>
    au FileType go setlocal foldmethod=indent foldnestmax=1 foldlevel=1
-   au FileType go nnoremap <buffer> <silent> <C-]> :LspDefinition<CR>
    au FileType go nmap <buffer> <silent> <LocalLeader>gb <Plug>(go-build)
    au FileType go nmap <buffer> <silent> <LocalLeader>gy <Plug>(go-test-compile)
    au FileType go nmap <buffer> <silent> <LocalLeader>gt <Plug>(go-test)
@@ -260,7 +288,6 @@ if has("autocmd")
  augroup rust
    au!
    au FileType rust inoremap <buffer> <Tab> <C-R>=CleverTab()<CR>
-   au FileType rust nnoremap <buffer> <silent> <C-]> :LspDefinition<CR>
    au FileType rust nmap <buffer> <silent> <LocalLeader>cb :Cbuild<CR>
    au FileType rust nmap <buffer> <silent> <LocalLeader>cr :Crun<CR>
    au FileType rust nmap <buffer> <silent> <LocalLeader>ct :Ctest<CR>
