@@ -21,6 +21,7 @@ if &term =~ '256color'
   endif
   hi CursorLine guibg=#2c1c1c ctermbg=234 cterm=none
   hi SignColumn guibg=#c2bfa5 ctermbg=144
+  hi Terminal guibg=#000000 ctermbg=0
 endif
 
 set viewoptions=cursor,folds
